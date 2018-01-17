@@ -2,10 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hello World</title>
+  <title>Cocktail Master</title>
   <link rel='stylesheet' href='/stylesheets/main.css'>
 </head>
 <body>
+  <nav>
+    <a class="active" href="/">Home</a>
+    <a href="/diy_showroom">DIY Showroom</a>
+    <a href="/new">DIY A Cocktail</a>
+    <a href="/my_cocktails">MyCocktails</a>
+    <a id="login" href="/">Log in</a>
+  </nav>
+  <form class="mainform">
+    <h1>CocktailMaster</h1>
+    <input type="text" placeholder="search by the following options...">
+    <button>Search Cocktails</button>
+  </form>
 
   <%= yield %>
 

@@ -6,7 +6,6 @@ CREATE TABLE mydrinks (
   id SERIAL PRIMARY KEY,
   idDrink VARCHAR(255),
   strDrink VARCHAR(255),
-  strCategory VARCHAR(255),
   strAlcoholic VARCHAR(255),
   strGlass VARCHAR(255),
   strInstructions VARCHAR(1000),
@@ -21,11 +20,6 @@ CREATE TABLE mydrinks (
   strIngr8 VARCHAR(255),
   strIngr9 VARCHAR(255),
   strIngr10 VARCHAR(255),
-  strIngr11 VARCHAR(255),
-  strIngr12 VARCHAR(255),
-  strIngr13 VARCHAR(255),
-  strIngr14 VARCHAR(255),
-  strIngr15 VARCHAR(255),
   strMeas1 VARCHAR(255),
   strMeas2 VARCHAR(255),
   strMeas3 VARCHAR(255),
@@ -36,12 +30,7 @@ CREATE TABLE mydrinks (
   strMeas8 VARCHAR(255),
   strMeas9 VARCHAR(255),
   strMeas10 VARCHAR(255),
-  strMeas11 VARCHAR(255),
-  strMeas12 VARCHAR(255),
-  strMeas13 VARCHAR(255),
-  strMeas14 VARCHAR(255),
-  strMeas15 VARCHAR(255),
-  dateModified DATE
+  dateModified VARCHAR(255)
 );
 
 CREATE TABLE users (
@@ -51,20 +40,22 @@ CREATE TABLE users (
   password_digest VARCHAR(400)
 );
 
-CREATE TABLE notes (
+-- reserved as a bonus part
+-- CREATE TABLE comments (
+--   id SERIAL PRIMARY KEY,
+--   body VARCHAR(1000) NOT NULL,
+--   user_id INTEGER NOT NULL,
+--   drink_id INTEGER NOT NULL,
+--   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT,
+--   FOREIGN KEY (drink_id) REFERENCES mydrinks(id) ON DELETE RESTRICT
+-- );
+
+CREATE TABLE collects (
   id SERIAL PRIMARY KEY,
-  body VARCHAR(1000) NOT NULL,
   user_id INTEGER NOT NULL,
   drink_id INTEGER NOT NULL,
+  note_body VARCHAR(1000) NOT NULL,
+  rating INTEGER,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT,
   FOREIGN KEY (drink_id) REFERENCES mydrinks(id) ON DELETE RESTRICT
-);
-
-# reserved as a bonus part
-CREATE TABLE ratings (
-  id SERIAL PRIMARY KEY,
-  email VARCHAR(255),
-  strDrink VARCHAR(255),
-  idDrink VARCHAR(255),
-  rating INTEGER
 );

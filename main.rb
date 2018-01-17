@@ -3,15 +3,21 @@ require 'sinatra'
 require 'sinatra/reloader'
 require_relative 'db_config'
 require_relative 'models/mydrink'
-require_relative 'models/comment'
-require_relative 'models/rating'  # bonus part
+# require_relative 'models/comment' # bonus part
+require_relative 'models/collect'  
 require_relative 'models/user'
 
 enable :sessions # sinatra feature to do sessions
 
 # global methods
-helper do
+helpers do
+  def current_user
+    User.find_by(id: session[:user_id])
+  end
 
+  def logged_in?
+    !!current_user
+  end
 end
 
 
@@ -20,12 +26,12 @@ get '/' do
   erb :index
 end
 
-get '/mydrinks' do
-  erb :mydrinks
+get '/my_cocktails' do
+  erb :my_cocktails
 end
 
-get '/diydrinks' do
-  erb :diydrinks
+get '/diy_showroom' do
+  erb :diy_showroom
 end
 
 get '/show/:id' do

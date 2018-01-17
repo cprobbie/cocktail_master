@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  float: center;
+  margin: 0 auto;
+}
+
+main {
+  display: inline-block;
+  background-color: mistyrose;
+  float: left;
+  width: 72%;
+  padding: 0 1%;
+}
+
+aside {
+  display: inline-block;
+  background-color: lightgreen;
+  float: left;
+  width: 24%;
+  padding: 0 1%;
+  text-align: center;
+  padding: 0 auto;
+  align-content: center;
+}
+aside button {
+  display: block;
+  margin: 0 auto;
+}
+main form {
+  display: inline-block;
+
+}
