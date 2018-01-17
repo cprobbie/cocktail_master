@@ -35,11 +35,13 @@ nav a:hover {
     color: black;
 }
 
-#login {
+.login_status {
   float: right;
   color: black;
   font-size: 14px;
   border: none;
+  text-align: right;
+  margin-right: 3%;
 }
 
 .mainform {
@@ -58,7 +60,7 @@ form h1, form input, form button {
   font-size: 18px;
 }
 
-button {
+.search_button {
   height: 30px;
   border-radius: 12px;
   font-size: 15px;

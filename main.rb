@@ -27,6 +27,7 @@ get '/' do
 end
 
 get '/my_cocktails' do
+
   erb :my_cocktails
 end
 
@@ -34,17 +35,38 @@ get '/diy_showroom' do
   erb :diy_showroom
 end
 
-get '/show/:id' do
-  erb :show
-end
-
 get '/drinks/new' do
   erb :new
 end
 
+get '/show/:id' do
+  erb :show
+end
+
+
 get '/login' do
   erb :login
 end
+
+post '/session' do
+  # check email
+  user = User.find_by(email: params[:email])
+
+  # check password
+  if user && user.authenticate(params[:password])
+    session[:user_id] = user.id
+
+    redirect '/my_cocktails'
+  else
+    erb :index
+  end
+end
+
+delete '/session' do
+  session[:user_id] = nil
+  redirect '/'
+end
+
 
 
 

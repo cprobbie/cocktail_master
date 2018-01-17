@@ -5,6 +5,7 @@ CREATE DATABASE cocktail_master;
 CREATE TABLE mydrinks (
   id SERIAL PRIMARY KEY,
   idDrink VARCHAR(255),
+  creater_id INTEGER,
   strDrink VARCHAR(255),
   strAlcoholic VARCHAR(255),
   strGlass VARCHAR(255),
@@ -30,7 +31,8 @@ CREATE TABLE mydrinks (
   strMeas8 VARCHAR(255),
   strMeas9 VARCHAR(255),
   strMeas10 VARCHAR(255),
-  dateModified VARCHAR(255)
+  dateModified VARCHAR(255),
+  FOREIGN KEY (creater_id) REFERENCES users(id) ON DELETE RESTRICT
 );
 
 CREATE TABLE users (

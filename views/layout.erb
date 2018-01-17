@@ -11,12 +11,22 @@
     <a href="/diy_showroom">DIY Showroom</a>
     <a href="/new">DIY A Cocktail</a>
     <a href="/my_cocktails">MyCocktails</a>
-    <a id="login" href="/">Log in</a>
   </nav>
+
+  <% if logged_in? %>
+  <span class="login_status">Logged in as <%= User.find(session[:user_id]).nickname %></span>
+  <form class="login_status" action="/session" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button>logout</button>
+  </form>
+  <% else %>
+  <span class="login_status" href="/">Please log in</span>
+  <% end %>
+
   <form class="mainform">
     <h1>CocktailMaster</h1>
     <input type="text" placeholder="search by the following options...">
-    <button>Search Cocktails</button>
+    <button class="search_button">Search Cocktails</button>
   </form>
 
   <%= yield %>
