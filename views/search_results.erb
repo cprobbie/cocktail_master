@@ -1,0 +1,11 @@
+<h2><%= @result_hash.count %> search results displayed for keyword: <span><%= @drink_keyword %></span></h2>
+
+
+<div class="result" action="/show">  
+  <% @result_hash.each do |drink| %>
+  <a href="/show?i=<%= drink["idDrink"] %>">  
+    <h4><%= drink["strDrink"] %></h4>
+    <img src="<%= drink["strDrinkThumb"] %>" alt="">
+  </a>
+  <% end %>
+</div>

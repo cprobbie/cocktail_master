@@ -7,8 +7,8 @@
 </head>
 <body>
   <nav>
-    <a class="active" href="/">Home</a>
-    <a href="/diy_showroom">DIY Showroom</a>
+    <a href="/">Home</a>
+    <a href="/popular_cocktails">Popular Cocktails</a>
     <a href="/new">DIY A Cocktail</a>
     <a href="/my_cocktails">MyCocktails</a>
   </nav>
@@ -23,13 +23,13 @@
   <span class="login_status" href="/">Please log in</span>
   <% end %>
 
-  <form class="mainform">
+  <form class="main_form" action="/search_results">
     <h1>CocktailMaster</h1>
-    <input type="text" placeholder="search by the following options...">
+    <input type="text" name="drink_name" placeholder="search by the following options...">
     <button class="search_button">Search Cocktails</button>
   </form>
 
   <%= yield %>
-
+  <!-- <footer>Created by Robbie Cheng 2018</footer> -->
 </body>
 </html>

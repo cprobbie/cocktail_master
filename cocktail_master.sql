@@ -2,7 +2,7 @@
 
 CREATE DATABASE cocktail_master;
 
-CREATE TABLE mydrinks (
+CREATE TABLE drinks (
   id SERIAL PRIMARY KEY,
   idDrink VARCHAR(255),
   creater_id INTEGER,
@@ -52,12 +52,12 @@ CREATE TABLE users (
 --   FOREIGN KEY (drink_id) REFERENCES mydrinks(id) ON DELETE RESTRICT
 -- );
 
-CREATE TABLE collects (
+CREATE TABLE mydrinks (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
   drink_id INTEGER NOT NULL,
   note_body VARCHAR(1000) NOT NULL,
   rating INTEGER,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT,
-  FOREIGN KEY (drink_id) REFERENCES mydrinks(id) ON DELETE RESTRICT
+  FOREIGN KEY (drink_id) REFERENCES drinks(id) ON DELETE RESTRICT
 );

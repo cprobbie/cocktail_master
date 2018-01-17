@@ -23,16 +23,13 @@ nav a {
     font-size: 14px;
     /*border: 1px solid black;*/
     border-left: none;
+    border-top: 4px solid white;
 }
 
-nav a.active {
-    border-bottom: 4px solid black;
-}
-/* Change the color of links on hover */
+/* Change the color of border on hover */
 nav a:hover {
-    background-color: #ddd;
     text-decoration: none;
-    color: black;
+    border-color: black;
 }
 
 .login_status {
@@ -44,7 +41,7 @@ nav a:hover {
   margin-right: 3%;
 }
 
-.mainform {
+.main_form {
   display: block;
   margin-left: 8%;
 }
@@ -54,7 +51,7 @@ form h1, form input, form button {
   margin: 3% 0.5%;
 }
 
-.mainform input {
+.main_form input {
   width: 380px;
   height: 30px;
   font-size: 18px;
@@ -67,9 +64,10 @@ form h1, form input, form button {
 }
 
 button:hover {
-  background-color: lightgrey;
+  background-color: #ddd;
 }
 
+/*login box*/
 .login {
   border: 2px solid black;
   width: 220px;
@@ -78,3 +76,46 @@ button:hover {
   text-align: right;
 }
 
+/*drink of the day*/
+#shuffle{
+  margin: 0;
+}
+aside img {
+  width: 220px;
+  height: 220px;
+}
+
+/*search_results*/
+h2 {
+  text-align: center;
+}
+h4 {
+  color: purple;
+}
+
+div.result {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+a {
+  text-decoration: none;
+}
+
+.result a{
+  display: inline-block;
+  margin: 14px;
+  transition: transform .2s;
+  text-align: center;  
+}
+
+
+div.result a:hover {
+  transform: scale(1.08);
+}
+
+.result img {
+  max-height: 300px;
+  max-width: 300px;
+}
+/***************/

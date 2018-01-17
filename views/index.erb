@@ -12,3 +12,12 @@
     <button>Log in</button>
   </form>
 </div>
+<br>
+<aside style="text-align: center;">
+    <p>Feeling Lucky Today? Here is "Your Cocktail Of The Day!"</p>
+    <form action="/">
+      <button id="shuffle">Shuffle A Cocktail</button>
+    </form>
+    <img src="<%= @result_hash['strDrinkThumb'] %>" alt="">
+    <h4><%= @result_hash["strDrink"] %></h4>
+</aside>

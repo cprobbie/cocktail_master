@@ -1,10 +1,11 @@
      
 require 'sinatra'
 require 'sinatra/reloader'
+require 'httparty'
 require_relative 'db_config'
 require_relative 'models/mydrink'
 # require_relative 'models/comment' # bonus part
-require_relative 'models/collect'  
+require_relative 'models/drink'  
 require_relative 'models/user'
 
 enable :sessions # sinatra feature to do sessions
@@ -21,18 +22,28 @@ helpers do
 end
 
 
-# get index homepage
+# get index homepage with login
 get '/' do
+  result = HTTParty.get("http://www.thecocktaildb.com/api/json/v1/1/random.php")
+  @result_hash = result.parsed_response['drinks'].first
   erb :index
 end
 
-get '/my_cocktails' do
+get '/search_results' do
+  @drink_keyword = "#{params[:drink_name]}"
+  result = HTTParty.get("http://www.thecocktaildb.com/api/json/v1/1/search.php?s=#{params[:drink_name]}")
+  @result_hash = result.parsed_response['drinks']
+  erb :search_results
+end
 
+get '/my_cocktails' do
+  @drinks = Mydrink.all
   erb :my_cocktails
 end
 
-get '/diy_showroom' do
-  erb :diy_showroom
+get '/popular_cocktails' do
+  @drinks = Drink.all
+  erb :popular_cocktails
 end
 
 get '/drinks/new' do
@@ -40,7 +51,15 @@ get '/drinks/new' do
 end
 
 get '/show/:id' do
+  redirect '/' unless logged_in?
+  @drink = Mydrink.find(params[:id])
   erb :show
+end
+
+get '/show' do
+  redirect '/' unless logged_in?
+
+  erb :show_apiDB
 end
 
 
