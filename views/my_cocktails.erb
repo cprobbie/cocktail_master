@@ -2,8 +2,8 @@
 
 <% @drinks.each do |drink| %>
 <p>
-  <a href="/drinks/<%= drink.id %>">
-    <%= drink.note_body %>
+  <a href="/show/<%= drink.id %>">
+   <button><%= drink.strdrink %></button>
   </a> 
 </p>
 <% end %>

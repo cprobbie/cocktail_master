@@ -1,7 +1,8 @@
      
 require 'sinatra'
-# require 'sinatra/reloader'
+require 'sinatra/reloader'
 require 'httparty'
+require 'pry'
 require_relative 'db_config'
 require_relative 'models/mydrink'
 # require_relative 'models/comment' # bonus part
@@ -38,7 +39,13 @@ end
 
 get '/my_drinks' do
   # redirect '/' unless logged_in?
-  @drinks = Mydrink.all
+  # find the drink_id from mydrinks table 
+  mydrinks = Mydrink.all
+  @drinks = []
+  mydrinks.each do |elem|
+    @drinks << Drink.find_by(id: elem[:drink_id])
+  end
+  # binding.pry
   erb :my_cocktails
 end
 
@@ -51,10 +58,10 @@ post '/drinks' do
   mydrink = Mydrink.new
   mydrink.user_id = current_user.id
   mydrink.drink_id = drink.id
-  mydrink.note_body = 
+  # mydrink.note_body = 
   # mydrink.rating = 
   mydrink.save
-  redirect '/my_drinks'
+  redirect '/'
 end
 
 get '/drinks' do

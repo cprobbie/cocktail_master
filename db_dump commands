@@ -1,3 +1,9 @@
 db_dump commands
 
 pg_dump -Fc --no-acl --no-owner -h localhost -U RobbieC cocktail_master > db.dump
+
+https://github.com/cprobbie23/cocktail_master/raw/master/db.dump
+
+heroku pg:backups:restore '<URL_to_database_on_github>' DATABASE_URL
+
+heroku pg:backups:restore 'https://github.com/cprobbie23/cocktail_master/raw/master/db.dump' DATABASE_URL
