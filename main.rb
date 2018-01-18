@@ -1,6 +1,6 @@
      
 require 'sinatra'
-require 'sinatra/reloader'
+# require 'sinatra/reloader'
 require 'httparty'
 require_relative 'db_config'
 require_relative 'models/mydrink'
@@ -36,13 +36,28 @@ get '/search_results' do
   erb :search_results
 end
 
-get '/my_cocktails' do
+get '/my_drinks' do
   # redirect '/' unless logged_in?
   @drinks = Mydrink.all
   erb :my_cocktails
 end
 
-get '/popular_cocktails' do
+post '/drinks' do
+  drink = Drink.new
+  drink.iddrink = params[:apiDb_id]
+  drink.strdrink = params[:apiDb_name]
+  drink.save
+
+  mydrink = Mydrink.new
+  mydrink.user_id = current_user.id
+  mydrink.drink_id = drink.id
+  mydrink.note_body = 
+  # mydrink.rating = 
+  mydrink.save
+  redirect '/my_drinks'
+end
+
+get '/drinks' do
   @drinks = Drink.all
   erb :popular_cocktails
 end
@@ -59,7 +74,8 @@ end
 
 get '/show' do
   # redirect '/' unless logged_in? 
-
+  result = HTTParty.get("http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=#{params[:i]}")
+  @result_hash = result.parsed_response['drinks'].first
   erb :show_apiDB
 end
 
@@ -76,7 +92,7 @@ post '/session' do
   if user && user.authenticate(params[:password])
     session[:user_id] = user.id
 
-    redirect '/my_cocktails'
+    redirect '/my_drinks'
   else
     erb :index
   end

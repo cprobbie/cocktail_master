@@ -2,20 +2,34 @@
 
 <div class="container">
   <div class="left" style="background-color: lightblue;">
-    <h3><%= @drink.strdrink %></h3>
-    <img src="<%= @drink.strdrinkthumb %> " alt="">
+    <h3><%= @result_hash["strDrink"] %></h3>
+    <img src="<%= @result_hash["strDrinkThumb"] %> " alt="">
     <br>
-    <button>Save to MyCocktails</button>
+    <form action="/drinks" method="post">
+      <input type="text" name="apiDb_name" value="<%= @result_hash["strDrink"] %>">
+      <input type="text" name="apiDb_id" value="<%= @result_hash["idDrink"] %>">
+      <button>Save to MyCocktails</button>
+    </form>
     <h5>Instructions:</h5>
-    <p><%= @drink.strinstructions %></p>
+    <p style="width: 350px; text-align: justify;"><%= @result_hash["strInstructions"] %></p>
   </div>
 
   <div class="right" style="background-color: mistyrose;">
-    <p>Serve: <span><%= @drink.strglass %></span><br>
-      Ingredients:
-    </p>
-    <p><%= @drink.stringr1%>  <%= @drink.strmeas1 %></p>
-    <p><%= @drink.stringr2%>  <%= @drink.strmeas2 %></p>
-    <p><%= @drink.stringr3%>  <%= @drink.strmeas3 %></p>
-    <p><%= @drink.stringr4%>  <%= @drink.strmeas4 %></p>
-    <p><%= @drink.stringr5%>  <%= @drink.strmeas5 %></p>
+    <p>Alcohol: <span><%= @result_hash["strAlcoholic"] %></span></p>
+    <p>Serve: <span><%= @result_hash["strGlass"] %></span></p>
+    <p>Ingredients: </p> 
+    <img src="http://www.thecocktaildb.com/images/ingredients/<%= @result_hash["strIngredient1"] %>.png" alt="">
+    <img src="http://www.thecocktaildb.com/images/ingredients/<%= @result_hash["strIngredient2"] %>.png" alt="">
+    <img src="http://www.thecocktaildb.com/images/ingredients/<%= @result_hash["strIngredient3"] %>.png" alt="">
+    <img src="http://www.thecocktaildb.com/images/ingredients/<%= @result_hash["strIngredient4"] %>.png" alt="">
+    <img src="http://www.thecocktaildb.com/images/ingredients/<%= @result_hash["strIngredient5"] %>.png" alt="">
+    <img src="http://www.thecocktaildb.com/images/ingredients/<%= @result_hash["strIngredient6"] %>.png" alt="">
+    <img src="http://www.thecocktaildb.com/images/ingredients/<%= @result_hash["strIngredient7"] %>.png" alt="">
+    <p><%= @result_hash["strIngredient1"] %>  <%= @result_hash["strMeasure1"] %></p>
+    <p><%= @result_hash["strIngredient2"] %>  <%= @result_hash["strMeasure2"] %></p>
+    <p><%= @result_hash["strIngredient3"] %>  <%= @result_hash["strMeasure3"] %></p>
+    <p><%= @result_hash["strIngredient4"] %>  <%= @result_hash["strMeasure4"] %></p>
+    <p><%= @result_hash["strIngredient5"] %>  <%= @result_hash["strMeasure5"] %></p>
+    <p><%= @result_hash["strIngredient6"] %>  <%= @result_hash["strMeasure6"] %></p>
+    <p><%= @result_hash["strIngredient7"] %>  <%= @result_hash["strMeasure7"] %></p>
+    

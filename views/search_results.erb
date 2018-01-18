@@ -1,7 +1,7 @@
 <h2><%= @result_hash.count %> search results displayed for keyword: <span><%= @drink_keyword %></span></h2>
 
 
-<div class="result" action="/show">  
+<div class="result">  
   <% @result_hash.each do |drink| %>
   <a href="/show?i=<%= drink["idDrink"] %>">  
     <h4><%= drink["strDrink"] %></h4>

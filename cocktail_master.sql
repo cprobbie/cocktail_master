@@ -56,7 +56,7 @@ CREATE TABLE mydrinks (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
   drink_id INTEGER NOT NULL,
-  note_body VARCHAR(1000) NOT NULL,
+  note_body VARCHAR(1000),
   rating INTEGER,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT,
   FOREIGN KEY (drink_id) REFERENCES drinks(id) ON DELETE RESTRICT
