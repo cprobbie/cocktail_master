@@ -9,7 +9,7 @@
   <nav>
     <a href="/">Home</a>
     <a href="/drinks">Popular Cocktails</a>
-    <a href="/new">DIY A Cocktail</a>
+    <a href="/drinks/new">DIY A Cocktail</a>
     <a href="/my_drinks">MyCocktails</a>
   </nav>
 
@@ -20,7 +20,9 @@
     <button>logout</button>
   </form>
   <% else %>
-  <span class="login_status" href="/">Please log in</span>
+  <form action="/">
+    <button class="login_status" href="/">Please log in</button>
+  </form>
   <% end %>
 
   <form class="main_form" action="/search_results">

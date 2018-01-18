@@ -49,11 +49,38 @@ get '/my_drinks' do
   erb :my_cocktails
 end
 
+delete '/my_drinks/:id' do
+  mydrink = Mydrink.find_by(drink_id: params[:id]).delete
+  redirect '/my_drinks'
+end
+
 post '/drinks' do
-  drink = Drink.new
-  drink.iddrink = params[:apiDb_id]
-  drink.strdrink = params[:apiDb_name]
-  drink.save
+  # if (Drink.find_by(iddrink: params[:apiDb_id]))== nil
+    drink = Drink.new
+    drink.iddrink = params[:apiDb_id]
+    drink.strdrink = params[:apiDb_name]
+    drink.strdrinkthumb = params[:apiDb_pic]
+    drink.strglass = params[:apiDb_gla]
+    drink.strinstructions = params[:apiDb_ins]
+
+    drink.stringr1 = params[:apiDb_ing1]
+    drink.stringr2 = params[:apiDb_ing2]
+    drink.stringr3 = params[:apiDb_ing3]
+    drink.stringr4 = params[:apiDb_ing4]
+    drink.stringr5 = params[:apiDb_ing5]
+    drink.stringr6 = params[:apiDb_ing6]
+    drink.stringr7 = params[:apiDb_ing7]
+
+    drink.strmeas1 = params[:apiDb_mea1]
+    drink.strmeas2 = params[:apiDb_mea2]
+    drink.strmeas3 = params[:apiDb_mea3]
+    drink.strmeas4 = params[:apiDb_mea4]
+    drink.strmeas5 = params[:apiDb_mea5]
+    drink.strmeas6 = params[:apiDb_mea6]
+    drink.strmeas7 = params[:apiDb_mea7]
+
+    drink.save
+  # end
 
   mydrink = Mydrink.new
   mydrink.user_id = current_user.id
@@ -61,7 +88,7 @@ post '/drinks' do
   # mydrink.note_body = 
   # mydrink.rating = 
   mydrink.save
-  redirect '/'
+  redirect '/my_drinks'
 end
 
 get '/drinks' do
@@ -71,6 +98,45 @@ end
 
 get '/drinks/new' do
   erb :new
+end
+
+post '/drinks/:id' do
+  # add a new cocktail to the database
+  drink = Drink.new
+  drink.creater_id = current_user.id
+  drink.strdrink = params[:strDrink]
+  drink.strglass = params[:strGlass]
+  drink.strinstructions = params[:strInstructions]
+  drink.strdrinkthumb = params[:strDrinkThumb]
+
+  drink.stringr1 = params[:strIngredient1]
+  drink.stringr2 = params[:strIngredient2]
+  drink.stringr3 = params[:strIngredient3]
+  drink.stringr4 = params[:strIngredient4]
+  drink.stringr5 = params[:strIngredient5]
+  drink.stringr6 = params[:strIngredient6]
+  drink.stringr7 = params[:strIngredient7]
+
+  drink.strmeas1 = params[:strMeasure1]
+  drink.strmeas2 = params[:strMeasure2]
+  drink.strmeas3 = params[:strMeasure3]
+  drink.strmeas4 = params[:strMeasure4]
+  drink.strmeas5 = params[:strMeasure5]
+  drink.strmeas6 = params[:strMeasure6]
+  drink.strmeas7 = params[:strMeasure7]
+
+  drink.datemodified = Date.today.to_s
+  drink.save
+
+  mydrink = Mydrink.new
+  mydrink.user_id = current_user.id
+  mydrink.drink_id = drink.id
+  # mydrink.note_body = 
+  # mydrink.rating = 
+  mydrink.save
+
+  redirect '/my_drinks'
+
 end
 
 get '/show/:id' do

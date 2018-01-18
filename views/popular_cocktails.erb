@@ -1,9 +1,10 @@
 <h2>Display all the cocktails in the database</h2>
 
-<% @drinks.each do |drink| %>
-<p>
-  <a href="/show/<%= drink.id %>">
-   <button><%= drink.strdrink %></button>
-  </a> 
-</p>
-<% end %>
+<div class="result">  
+  <% @drinks.each do |drink| %>
+  <a href="/show/<%= drink.id %>">  
+    <h4><%= drink.strdrink %></h4>
+    <img src="<%= drink.strdrinkthumb %>" alt="">
+  </a>
+  <% end %>
+</div>

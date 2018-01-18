@@ -1,9 +1,14 @@
 <h2>Discover more Cocktails and save to your collections</h2>
 
-<% @drinks.each do |drink| %>
-<p>
-  <a href="/show/<%= drink.id %>">
-   <button><%= drink.strdrink %></button>
-  </a> 
-</p>
-<% end %>
+<div class="result">  
+  <% @drinks.each do |drink| %>
+  <a href="/show/<%= drink.id %>">  
+    <h4><%= drink.strdrink %></h4>
+    <img src="<%= drink.strdrinkthumb %>" alt="">
+    <form action="/my_drinks/<%= drink.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button>Delete</button>
+    </form>
+  </a>
+  <% end %>
+</div>

@@ -138,4 +138,14 @@ div.result a:hover {
   width: 150px;
   height: 150px;
 }
+/*-------new-------*/
+.new_form {
+  border: 1px solid black;
+  width: 40%;
+  padding: 2% 6%;
+  float: center;
+  margin: 0 auto;
+}
+
+
 
