@@ -1,6 +1,6 @@
      
 require 'sinatra'
-require 'sinatra/reloader'
+# require 'sinatra/reloader'
 require 'httparty'
 require 'pry'
 require_relative 'db_config'
@@ -19,6 +19,10 @@ helpers do
 
   def logged_in?
     !!current_user
+  end
+  # hasnt been used
+  def drink_exist?
+    !!Drink.find_by(iddrink: params[:apiDb_id])
   end
 end
 
@@ -40,10 +44,13 @@ end
 get '/my_drinks' do
   # redirect '/' unless logged_in?
   # find the drink_id from mydrinks table 
+
   mydrinks = Mydrink.all
   @drinks = []
   mydrinks.each do |elem|
-    @drinks << Drink.find_by(id: elem[:drink_id])
+    if elem.user_id == current_user.id
+      @drinks << Drink.find_by(id: elem[:drink_id])
+    end
   end
   # binding.pry
   erb :my_cocktails
@@ -55,7 +62,8 @@ delete '/my_drinks/:id' do
 end
 
 post '/drinks' do
-  # if (Drink.find_by(iddrink: params[:apiDb_id]))== nil
+    drink_exist = Drink.find_by(iddrink: params[:apiDb_id])
+  if drink_exist == nil
     drink = Drink.new
     drink.iddrink = params[:apiDb_id]
     drink.strdrink = params[:apiDb_name]
@@ -80,14 +88,19 @@ post '/drinks' do
     drink.strmeas7 = params[:apiDb_mea7]
 
     drink.save
-  # end
-
-  mydrink = Mydrink.new
-  mydrink.user_id = current_user.id
-  mydrink.drink_id = drink.id
-  # mydrink.note_body = 
-  # mydrink.rating = 
-  mydrink.save
+  end
+  if Mydrink.find_by(drink_id: drink_exist.id)==nil
+    mydrink = Mydrink.new
+    mydrink.user_id = current_user.id
+    # mydrink.note_body = 
+    # mydrink.rating = 
+    if (Drink.find_by(iddrink: params[:apiDb_id]))== nil
+      mydrink.drink_id = drink.id
+    else
+      mydrink.drink_id = Drink.find_by(iddrink: params[:apiDb_id]).id
+    end
+      mydrink.save
+  end
   redirect '/my_drinks'
 end
 
@@ -155,6 +168,15 @@ end
 
 get '/login' do
   erb :login
+end
+
+post '/users' do
+  user = User.new
+  user.email = params[:email]
+  user.password = params[:password]
+  user.nickname = params[:nickname]
+  user.save
+  redirect '/'
 end
 
 post '/session' do

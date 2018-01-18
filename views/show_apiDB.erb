@@ -6,29 +6,29 @@
     <img src="<%= @result_hash["strDrinkThumb"] %> " alt="">
     <br>
     <form action="/drinks" method="post">
-      <input type="text" name="apiDb_name" value="<%= @result_hash["strDrink"] %>">
-      <input type="text" name="apiDb_id" value="<%= @result_hash["idDrink"] %>">
-      <input type="text" name="apiDb_pic" value="<%= @result_hash["strDrinkThumb"] %>">
-      <input type="text" name="apiDb_alc" value="<%= @result_hash["strAlcoholic"] %>">
-      <input type="text" name="apiDb_gla" value="<%= @result_hash["strGlass"] %>">
-      <input type="text" name="apiDb_ins" value="<%= @result_hash["strInstructions"] %>">
-      <input type="text" name="apiDb_ing1" value="<%= @result_hash["strIngredient1"] %>">
-      <input type="text" name="apiDb_ing2" value="<%= @result_hash["strIngredient2"] %>">
-      <input type="text" name="apiDb_ing3" value="<%= @result_hash["strIngredient3"] %>">
-      <input type="text" name="apiDb_ing4" value="<%= @result_hash["strIngredient4"] %>">
-      <input type="text" name="apiDb_ing5" value="<%= @result_hash["strIngredient5"] %>">
-      <input type="text" name="apiDb_ing6" value="<%= @result_hash["strIngredient6"] %>">
-      <input type="text" name="apiDb_ing7" value="<%= @result_hash["strIngredient7"] %>">
+      <input type="hidden" name="apiDb_name" value="<%= @result_hash["strDrink"] %>">
+      <input type="hidden" name="apiDb_id" value="<%= @result_hash["idDrink"] %>">
+      <input type="hidden" name="apiDb_pic" value="<%= @result_hash["strDrinkThumb"] %>">
+      <input type="hidden" name="apiDb_alc" value="<%= @result_hash["strAlcoholic"] %>">
+      <input type="hidden" name="apiDb_gla" value="<%= @result_hash["strGlass"] %>">
+      <input type="hidden" name="apiDb_ins" value="<%= @result_hash["strInstructions"] %>">
+      <input type="hidden" name="apiDb_ing1" value="<%= @result_hash["strIngredient1"] %>">
+      <input type="hidden" name="apiDb_ing2" value="<%= @result_hash["strIngredient2"] %>">
+      <input type="hidden" name="apiDb_ing3" value="<%= @result_hash["strIngredient3"] %>">
+      <input type="hidden" name="apiDb_ing4" value="<%= @result_hash["strIngredient4"] %>">
+      <input type="hidden" name="apiDb_ing5" value="<%= @result_hash["strIngredient5"] %>">
+      <input type="hidden" name="apiDb_ing6" value="<%= @result_hash["strIngredient6"] %>">
+      <input type="hidden" name="apiDb_ing7" value="<%= @result_hash["strIngredient7"] %>">
 
-      <input type="text" name="apiDb_mea1" value="<%= @result_hash["strMeasure1"] %>">
-      <input type="text" name="apiDb_mea2" value="<%= @result_hash["strMeasure2"] %>">
-      <input type="text" name="apiDb_mea3" value="<%= @result_hash["strMeasure3"] %>">
-      <input type="text" name="apiDb_mea4" value="<%= @result_hash["strMeasure4"] %>">
-      <input type="text" name="apiDb_mea5" value="<%= @result_hash["strMeasure5"] %>">
-      <input type="text" name="apiDb_mea6" value="<%= @result_hash["strMeasure6"] %>">
-      <input type="text" name="apiDb_mea7" value="<%= @result_hash["strMeasure7"] %>">
+      <input type="hidden" name="apiDb_mea1" value="<%= @result_hash["strMeasure1"] %>">
+      <input type="hidden" name="apiDb_mea2" value="<%= @result_hash["strMeasure2"] %>">
+      <input type="hidden" name="apiDb_mea3" value="<%= @result_hash["strMeasure3"] %>">
+      <input type="hidden" name="apiDb_mea4" value="<%= @result_hash["strMeasure4"] %>">
+      <input type="hidden" name="apiDb_mea5" value="<%= @result_hash["strMeasure5"] %>">
+      <input type="hidden" name="apiDb_mea6" value="<%= @result_hash["strMeasure6"] %>">
+      <input type="hidden" name="apiDb_mea7" value="<%= @result_hash["strMeasure7"] %>">
 
-      <input type="text" name="apiDb_date" value="<%= @result_hash["dateModified"] %>">
+      <input type="hidden" name="apiDb_date" value="<%= @result_hash["dateModified"] %>">
 
       <button>Save to MyCocktails</button>
     </form>

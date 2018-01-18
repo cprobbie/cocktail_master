@@ -1,16 +1,19 @@
 
 <div class="login">
-  <p>Log in to use your profile</p>
-  <form action="/session" method="post">
-    <label for="">Email</label>
-    <input name="email" type="text">
-    <label for="">Password</label>
-    <input name="password" type="password">
-    <label for="">Nickname</label>
-    <input name="nickname" type="text">
-
+  <p style="text-align: left;">Log in to use your profile</p>
+  <form action="/session" method="post" style="text-align: left;">
+    <input name="email" type="text" placeholder="email">
+    <input name="password" type="password" placeholder="password">
     <button>Log in</button>
   </form>
+  <p>To sign up please fill in this form</p>
+  <form action="/users" method="post">
+    <input name="email" type="text" placeholder="email">
+    <input name="password" type="password" placeholder="password">
+    <input name="nickname" type="text" placeholder="nickname">
+    <button>Create Account</button> 
+  </form>
+
 </div>
 <br>
 <aside style="text-align: center;">
