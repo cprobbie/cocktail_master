@@ -37,6 +37,7 @@ get '/search_results' do
 end
 
 get '/my_cocktails' do
+  # redirect '/' unless logged_in?
   @drinks = Mydrink.all
   erb :my_cocktails
 end
@@ -51,13 +52,13 @@ get '/drinks/new' do
 end
 
 get '/show/:id' do
-  redirect '/' unless logged_in?
-  @drink = Mydrink.find(params[:id])
+  # redirect '/' unless logged_in?
+  @drink = Drink.find(params[:id])
   erb :show
 end
 
 get '/show' do
-  redirect '/' unless logged_in?
+  # redirect '/' unless logged_in? 
 
   erb :show_apiDB
 end

@@ -118,4 +118,16 @@ div.result a:hover {
   max-height: 300px;
   max-width: 300px;
 }
-/***************/
+/*show*/
+.container {
+  width: 90%;
+  float: center;
+  margin: 0 auto;
+}
+.left, .right {
+  display: inline-block;
+  width: 50%;
+  float: left;
+
+}
+
