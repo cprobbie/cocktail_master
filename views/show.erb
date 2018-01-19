@@ -5,6 +5,12 @@
     <h3><%= @drink.strdrink %></h3>
     <img src="<%= @drink.strdrinkthumb %> " alt="">
     <br>
+    <h5>Notes</h5>
+    <p><%= @mydrink.note_body %></p>
+    <form action="/my_drinks" method="post">
+      <textarea name="note_body" id="" cols="30" rows="2"></textarea>
+      <button>Update</button>
+    </form>
     <button>Save to MyCocktails</button>
     <h5>Instructions:</h5>
     <p><%= @drink.strinstructions %></p>
@@ -19,7 +25,6 @@
     <p><%= @drink.stringr3%>  <%= @drink.strmeas3 %></p>
     <p><%= @drink.stringr4%>  <%= @drink.strmeas4 %></p>
     <p><%= @drink.stringr5%>  <%= @drink.strmeas5 %></p>
-
-
   </div>
+
 </div>
