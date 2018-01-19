@@ -1,7 +1,7 @@
 <h2>This is to show the details of a drink in CocktailDB</h2>
 
 <div class="container">
-  <div class="left" style="background-color: lightblue;">
+  <div class="left">
     <h3><%= @result_hash["strDrink"] %></h3>
     <img src="<%= @result_hash["strDrinkThumb"] %> " alt="">
     <br>
@@ -36,7 +36,7 @@
     <p style="width: 350px; text-align: justify;"><%= @result_hash["strInstructions"] %></p>
   </div>
 
-  <div class="right" style="background-color: mistyrose;">
+  <div class="right">
     <p>Alcohol: <span><%= @result_hash["strAlcoholic"] %></span></p>
     <p>Serve: <span><%= @result_hash["strGlass"] %></span></p>
     <p>Ingredients: </p> 

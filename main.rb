@@ -31,7 +31,7 @@ end
 get '/' do
   result = HTTParty.get("http://www.thecocktaildb.com/api/json/v1/1/random.php")
   @result_hash = result.parsed_response['drinks'].first
-  erb :index
+  erb :index, :layout => false
 end
 
 get '/search_results' do
@@ -54,6 +54,14 @@ get '/my_drinks' do
   end
   # binding.pry
   erb :my_cocktails
+end
+
+put '/my_drinks/:id' do
+  mydrink = Mydrink.find(params[:id])
+  mydrink.note_body = params[:body]
+  mydrink.save
+  # binding.pry
+  redirect "/show/#{mydrink.drink_id}"
 end
 
 delete '/my_drinks/:id' do

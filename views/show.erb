@@ -1,14 +1,15 @@
 <h2>This is to show the details of a drink in my DB</h2>
 
 <div class="container">
-  <div class="left" style="background-color: lightblue;">
+  <div class="left">
     <h3><%= @drink.strdrink %></h3>
     <img src="<%= @drink.strdrinkthumb %> " alt="">
     <br>
     <h5>Notes</h5>
-    <p><%= @mydrink.note_body %></p>
-    <form action="/my_drinks" method="post">
-      <textarea name="note_body" id="" cols="30" rows="2"></textarea>
+    <p><%=@mydrink.note_body %></p>
+    <form action="/my_drinks/<%= @mydrink.id %>" method="post">
+      <input type="hidden" name="_method" value="put">
+      <textarea name="body" id="" cols="30" rows="2"></textarea>
       <button>Update</button>
     </form>
     <button>Save to MyCocktails</button>
@@ -16,7 +17,7 @@
     <p><%= @drink.strinstructions %></p>
   </div>
 
-  <div class="right" style="background-color: mistyrose;">
+  <div class="right">
     <p>Serve: <span><%= @drink.strglass %></span><br>
       Ingredients:
     </p>
