@@ -1,6 +1,6 @@
      
 require 'sinatra'
-# require 'sinatra/reloader'
+require 'sinatra/reloader'
 require 'httparty'
 require 'pry'
 require_relative 'db_config'
@@ -122,7 +122,7 @@ get '/drinks/new' do
   erb :new
 end
 
-post '/drinks/:id' do
+post '/new_drink' do
   # add a new cocktail to the database
   drink = Drink.new
   drink.creater_id = current_user.id
@@ -148,15 +148,14 @@ post '/drinks/:id' do
   drink.strmeas7 = params[:strMeasure7]
 
   drink.datemodified = Date.today.to_s
+  drink.save
 
   mydrink = Mydrink.new
   mydrink.user_id = current_user.id
   mydrink.drink_id = drink.id
   # mydrink.note_body = params[:body]
-  binding.pry
   # mydrink.rating = 
   mydrink.save
-  drink.save
 
   redirect '/my_drinks'
 

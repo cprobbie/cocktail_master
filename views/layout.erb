@@ -15,7 +15,7 @@
   </nav>
 
   <% if logged_in? %>
-  <span class="login_status">Logged in as <%= User.find(session[:user_id]).nickname %></span>
+  <span class="login_status">Welcome back <%= User.find(session[:user_id]).nickname %></span>
   <form class="login_status" action="/session" method="post">
     <input type="hidden" name="_method" value="delete">
     <button>logout</button>
