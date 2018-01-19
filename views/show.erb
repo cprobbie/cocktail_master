@@ -6,12 +6,14 @@
     <img src="<%= @drink.strdrinkthumb %> " alt="">
     <br>
     <h5>Notes</h5>
-    <p><%=@mydrink.note_body %></p>
-    <form action="/my_drinks/<%= @mydrink.id %>" method="post">
-      <input type="hidden" name="_method" value="put">
-      <textarea name="body" id="" cols="30" rows="2"></textarea>
-      <button>Update</button>
-    </form>
+    <% if @mydrink != nil %> 
+      <p><%=@mydrink.note_body %></p>
+      <form action="/my_drinks/<%= @mydrink.id %>" method="post">
+        <input type="hidden" name="_method" value="put">
+        <textarea name="body" id="" cols="30" rows="2"></textarea>
+        <button>Update</button>
+      </form>
+    <% end %> 
     <button>Save to MyCocktails</button>
     <h5>Instructions:</h5>
     <p><%= @drink.strinstructions %></p>
